@@ -1,0 +1,342 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   DESIGN SYSTEM
+   ----------------------------------------------------------------------------
+   Direction: "Modern dark tech" (default) with a fully supported light mode.
+
+   Everything is driven by the raw tokens in :root / [data-theme="dark"] below.
+   Tailwind utilities (bg-surface, text-ink, rounded-card ...) point at those
+   raw tokens through the @theme block, so flipping the theme only swaps the
+   raw values -- no utility classes need to change.
+
+   TWEAK THE PALETTE HERE: change --accent / --accent-2 / --accent-3 and the
+   entire site (gradients, glows, rails, borders) follows.
+
+   CASCADE NOTE: everything below lives in @layer base or @layer components.
+   Unlayered CSS outranks every layer, so an unlayered universal
+   `padding: 0` rule would silently beat Tailwind's own padding, margin and
+   space-between utilities. Keep new rules inside a layer unless you
+   deliberately want them to win.
+   ========================================================================== */
+
+/* Manual dark mode: the `dark:` variant follows [data-theme="dark"] on <html>,
+   not the OS setting, so the toggle is authoritative. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ---------- Light theme (raw tokens) ---------- */
+:root {
+  --bg: #FAFAFC;
+  --bg-elevated: #FFFFFF;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-solid: #FFFFFF;
+  --surface-2: #F1F2F7;
+  --line: rgba(10, 10, 20, 0.09);
+  --line-strong: rgba(10, 10, 20, 0.16);
+  --ink: #0F1116;
+  --muted: #4B5563;
+  --faint: #8A90A0;
+
+  --accent: #6366F1;
+  --accent-2: #8B5CF6;
+  --accent-3: #06B6D4;
+
+  --glow: rgba(99, 102, 241, 0.18);
+  --shadow-card: 0 2px 8px rgba(15, 17, 22, 0.04), 0 12px 32px rgba(15, 17, 22, 0.06);
+  --shadow-lift: 0 8px 24px rgba(15, 17, 22, 0.08), 0 24px 56px rgba(99, 102, 241, 0.10);
+  --noise-opacity: 0.02;
+
+  color-scheme: light;
+}
+
+/* ---------- Dark theme (raw tokens) ---------- */
+html[data-theme="dark"] {
+  --bg: #0A0A0F;
+  --bg-elevated: #101017;
+  --surface: rgba(255, 255, 255, 0.035);
+  --surface-solid: #14141D;
+  --surface-2: #191922;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --ink: #E9EAF0;
+  --muted: #9CA3AF;
+  --faint: #6B7280;
+
+  --accent: #6366F1;
+  --accent-2: #8B5CF6;
+  --accent-3: #22D3EE;
+
+  --glow: rgba(99, 102, 241, 0.35);
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 16px 40px rgba(0, 0, 0, 0.45);
+  --shadow-lift: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 28px 64px rgba(0, 0, 0, 0.6);
+  --noise-opacity: 0.035;
+
+  color-scheme: dark;
+}
+
+/* ---------- Tailwind token bridge ---------- */
+@theme {
+  /* Typography: one display face for headings, one clean sans for body. */
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* Semantic colors -> raw tokens (theme-reactive). */
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-surface-solid: var(--surface-solid);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+
+  /* Radius scale: 8 / 14 / 20 / 28. */
+  --radius-chip: 8px;
+  --radius-control: 14px;
+  --radius-panel: 20px;
+  --radius-card: 28px;
+
+  /* Spacing keeps Tailwind's native 4px step:
+     1=4  2=8  4=16  6=24  8=32  16=64 -- stick to those values. */
+}
+
+/* ============================================================================
+   BASE
+   ========================================================================== */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    /* Lenis drives scrolling; native smooth scroll would fight it. */
+    scroll-behavior: auto;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background-color: var(--bg);
+    color: var(--ink);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  /* Buttons should inherit type rather than fall back to the UA font. */
+  button, input, textarea, select {
+    font: inherit;
+    color: inherit;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--line-strong);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+}
+
+/* ============================================================================
+   COMPONENTS
+   In @layer components so plain Tailwind utilities can still override them
+   (e.g. `panel bg-transparent` does what it looks like it does).
+   ========================================================================== */
+
+@layer components {
+  /* ---- Depth / 3D helpers -------------------------------------------------
+     The signature scroll effect needs a perspective ancestor to read as depth
+     rather than a flat scale. `.depth-scene` is applied to <main>. */
+
+  .depth-scene {
+    perspective: 1200px;     /* TWEAK: lower = more dramatic depth (600-2000) */
+    perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
+  }
+
+  .depth-layer {
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
+
+  .perspective-1000 { perspective: 1000px; }
+  .transform-style-3d { transform-style: preserve-3d; }
+  .backface-hidden { backface-visibility: hidden; }
+
+  /* ---- Surfaces ---------------------------------------------------------- */
+
+  .glass {
+    background: var(--surface);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid var(--line);
+  }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* Hairline highlight on the top edge -- reads as a lit surface in dark mode. */
+  .panel-sheen { position: relative; }
+  .panel-sheen::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--accent) 45%, transparent),
+      transparent
+    );
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  /* ---- Text treatments --------------------------------------------------- */
+
+  .gradient-text {
+    background: linear-gradient(120deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* ---- Decoration -------------------------------------------------------- */
+
+  .noise-overlay::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: var(--noise-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  /* Animated gradient ring, revealed on hover. Masked so only the 1px border
+     paints and the card's own background shows through the middle. */
+  .gradient-border { position: relative; }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(130deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent));
+    background-size: 300% 300%;
+    animation: gradientMove 6s ease infinite;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+  .gradient-border:hover::before { opacity: 1; }
+
+  .animate-float { animation: float 6s ease-in-out infinite; }
+  .animate-morph { animation: morph 14s ease-in-out infinite; }
+  .animate-shimmer { animation: shimmer 2.4s ease-in-out infinite; }
+  .animate-marquee { animation: marquee 40s linear infinite; }
+}
+
+/* ============================================================================
+   KEYFRAMES
+   ========================================================================== */
+
+@keyframes gradientMove {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -10px, 0); }
+}
+
+@keyframes morph {
+  0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50%  { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+@keyframes shimmer {
+  0%   { transform: translate3d(-120%, 0, 0); }
+  100% { transform: translate3d(120%, 0, 0); }
+}
+
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+/* ============================================================================
+   REDUCED MOTION
+   Deliberately unlayered so it outranks every utility and component rule.
+   JS animations are additionally guarded via gsap.matchMedia() and the
+   usePrefersReducedMotion hook -- this block covers the pure-CSS ones.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .depth-scene { perspective: none; }
+
+  /* Never leave content stuck at the hidden end of a scrubbed tween. */
+  .depth-layer {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

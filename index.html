@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Aditya Koushal - Frontend Developer building web applications with Angular and TypeScript." />
+    <meta name="theme-color" content="#0A0A0F" />
+    <meta property="og:title" content="Aditya Koushal - Frontend Developer" />
+    <meta property="og:description" content="Building clean, reliable web interfaces." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Aditya Koushal - Frontend Developer</title>
+
+    <!-- Fonts: Space Grotesk (display) + Inter (body) + JetBrains Mono (meta labels).
+         Preconnect first so the font CSS request doesn't wait on DNS + TLS. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      // Applies the stored theme before first paint so there is no flash of the
+      // wrong palette. Kept inline and tiny on purpose — it must run render-blocking.
+      (function () {
+        try {
+          var stored = localStorage.getItem('portfolio-theme');
+          var theme = stored === 'light' || stored === 'dark' ? stored : 'dark';
+          document.documentElement.dataset.theme = theme;
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute('content', theme === 'dark' ? '#0A0A0F' : '#FAFAFC');
+        } catch (e) {
+          document.documentElement.dataset.theme = 'dark';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
