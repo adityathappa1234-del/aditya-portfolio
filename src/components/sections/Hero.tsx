@@ -104,7 +104,7 @@ function InteractiveCard() {
 
           <div className="mb-6">
             <div className="flex items-baseline gap-2">
-              <span className="gradient-text font-display text-5xl font-bold">1.5+</span>
+              <span className="gradient-text font-display text-5xl font-bold">1+</span>
               <span className="text-sm text-faint">years building</span>
             </div>
             <p className="mt-2 text-sm text-muted">
