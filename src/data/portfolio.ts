@@ -3,7 +3,7 @@ export const personalInfo = {
   headline: 'Frontend Developer',
   tagline: 'Building clean, reliable web interfaces.',
   bio: 'Frontend Developer with 1+ years of experience specializing in Angular and TypeScript. I build responsive, high-performance web applications and software products, with hands-on experience delivering features for SaaS platforms. My focus is on writing clean, maintainable component architecture and crafting interfaces that are both fast and intuitive for end users.',
-  // location: 'India',
+  location: 'India',
   email: 'aditya.koushal@email.com',
   resumeUrl: '/resume.pdf',
   social: {
