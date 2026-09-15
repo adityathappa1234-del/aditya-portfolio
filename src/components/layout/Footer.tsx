@@ -7,8 +7,8 @@ export function Footer() {
   return (
     <footer className="relative z-10 border-t border-line bg-bg-elevated/40 backdrop-blur-sm">
       {/* Extra bottom padding on mobile clears the fixed bottom nav dock. */}
-      <div className="mx-auto max-w-6xl px-4 pt-12 pb-28 sm:px-6 md:pb-12 lg:px-8">
-        <div className="flex flex-col items-center justify-between gap-8 sm:flex-row">
+      <div className="mx-auto max-w-6xl px-5 pt-10 pb-24 sm:px-6 sm:pt-12 md:pb-12 lg:px-8">
+        <div className="flex flex-col items-center justify-between gap-6 sm:flex-row sm:gap-8">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-control bg-gradient-to-br from-accent to-accent-2 font-display text-sm font-bold text-white">
               AK
@@ -20,14 +20,6 @@ export function Footer() {
           </div>
 
           <nav className="flex items-center gap-6 text-sm text-muted" aria-label="Social links">
-            <a
-              href={personalInfo.social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-accent"
-            >
-              GitHub
-            </a>
             <a
               href={personalInfo.social.linkedin}
               target="_blank"

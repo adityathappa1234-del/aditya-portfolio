@@ -51,25 +51,28 @@
 
 /* ---------- Dark theme (raw tokens) ---------- */
 html[data-theme="dark"] {
-  --bg: #0A0A0F;
-  --bg-elevated: #101017;
-  --surface: rgba(255, 255, 255, 0.035);
-  --surface-solid: #14141D;
-  --surface-2: #191922;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.16);
-  --ink: #E9EAF0;
-  --muted: #9CA3AF;
-  --faint: #6B7280;
+  /* "Soft dark": a lifted slate rather than near-black, so panels, borders and
+     body copy sit on a readable mid-tone instead of a pit of #0A0A0F.
+     TWEAK: nudge --bg a few points lighter/darker and everything follows. */
+  --bg: #171A24;
+  --bg-elevated: #1E2231;
+  --surface: rgba(255, 255, 255, 0.055);
+  --surface-solid: #232838;
+  --surface-2: #2A3042;
+  --line: rgba(255, 255, 255, 0.11);
+  --line-strong: rgba(255, 255, 255, 0.22);
+  --ink: #F2F4FA;
+  --muted: #B3BACC;
+  --faint: #8790A5;
 
-  --accent: #6366F1;
-  --accent-2: #8B5CF6;
-  --accent-3: #22D3EE;
+  --accent: #818CF8;
+  --accent-2: #A78BFA;
+  --accent-3: #38D9F0;
 
-  --glow: rgba(99, 102, 241, 0.35);
-  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 16px 40px rgba(0, 0, 0, 0.45);
-  --shadow-lift: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 28px 64px rgba(0, 0, 0, 0.6);
-  --noise-opacity: 0.035;
+  --glow: rgba(129, 140, 248, 0.32);
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 12px 32px rgba(8, 10, 18, 0.34);
+  --shadow-lift: 0 1px 0 rgba(255, 255, 255, 0.07) inset, 0 22px 52px rgba(8, 10, 18, 0.44);
+  --noise-opacity: 0.022;
 
   color-scheme: dark;
 }
@@ -143,6 +146,14 @@ html[data-theme="dark"] {
   button, input, textarea, select {
     font: inherit;
     color: inherit;
+  }
+
+  /* Custom cursor: <Cursor/> adds .has-custom-cursor to <html> only when it is
+     actually drawing one (fine pointer, motion allowed), so the native cursor is
+     never hidden without a replacement on screen. */
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
   }
 
   ::selection {
@@ -310,6 +321,11 @@ html[data-theme="dark"] {
 @keyframes shimmer {
   0%   { transform: translate3d(-120%, 0, 0); }
   100% { transform: translate3d(120%, 0, 0); }
+}
+
+@keyframes cursorSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 @keyframes marquee {

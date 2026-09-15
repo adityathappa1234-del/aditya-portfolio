@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FiGithub, FiLinkedin, FiCopy, FiCheck, FiMapPin, FiArrowUpRight } from 'react-icons/fi'
+import { FiLinkedin, FiCopy, FiCheck, FiMapPin, FiArrowUpRight } from 'react-icons/fi'
 import { HiOutlineMail } from 'react-icons/hi'
 import { personalInfo } from '@/data/portfolio'
 import { DepthSection } from '@/components/ui/DepthSection'
@@ -31,7 +31,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="relative z-10 px-4 py-32 sm:px-6 lg:px-8">
+    <section id="contact" className="relative z-10 px-5 py-14 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
       {/* intensity 1.15: the closing section gets the most pronounced arrival. */}
       <DepthSection intensity={1.15} className="mx-auto max-w-4xl">
         <SectionHeading
@@ -46,7 +46,7 @@ export function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="panel panel-sheen relative overflow-hidden rounded-card p-8 sm:p-12 lg:p-16"
+          className="panel panel-sheen relative overflow-hidden rounded-card p-6 sm:p-10 lg:p-14"
         >
           <div
             className="animate-morph pointer-events-none absolute -right-24 -top-24 h-64 w-64 bg-gradient-to-br from-accent/20 to-accent-2/10 blur-3xl"
@@ -58,7 +58,7 @@ export function Contact() {
             aria-hidden="true"
           />
 
-          <div className="relative z-10 space-y-8 text-center">
+          <div className="relative z-10 space-y-6 text-center sm:space-y-8">
             <motion.p variants={fadeInUp} className="text-lg leading-relaxed text-muted">
               I'm always open to new opportunities, collaborations, and interesting problems.
             </motion.p>
@@ -97,7 +97,6 @@ export function Contact() {
 
             <motion.div variants={fadeInUp} className="flex items-center justify-center gap-3 pt-2">
               {[
-                { href: personalInfo.social.github, label: 'GitHub', Icon: FiGithub },
                 { href: personalInfo.social.linkedin, label: 'LinkedIn', Icon: FiLinkedin },
               ].map(({ href, label, Icon }) => (
                 <motion.a

@@ -50,10 +50,7 @@ export function SEO({
           description: personalInfo.bio,
           url: 'https://adityakoushal.dev',
           email: personalInfo.email,
-          sameAs: [
-            personalInfo.social.github,
-            personalInfo.social.linkedin,
-          ],
+          sameAs: [personalInfo.social.linkedin],
         })}
       </script>
 

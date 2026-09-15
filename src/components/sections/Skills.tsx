@@ -46,7 +46,7 @@ function SkillTicker() {
 
   return (
     <div
-      className="relative mt-16 overflow-hidden border-y border-line py-5 [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]"
+      className="relative mt-10 overflow-hidden sm:mt-14 border-y border-line py-5 [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]"
       aria-hidden="true"
     >
       <div className="animate-marquee flex w-max gap-10">
@@ -66,7 +66,7 @@ function SkillTicker() {
 
 export function Skills() {
   return (
-    <section id="skills" className="relative z-10 px-4 py-32 sm:px-6 lg:px-8">
+    <section id="skills" className="relative z-10 px-5 py-14 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
       <DepthSection className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Skills"
@@ -74,8 +74,8 @@ export function Skills() {
           description="The frontend stack I use day to day."
         />
 
-        <div className="panel rounded-card p-6 sm:p-8">
-          <div className="grid gap-x-12 gap-y-6 sm:grid-cols-2">
+        <div className="panel rounded-card p-5 sm:p-8">
+          <div className="grid gap-x-12 gap-y-5 sm:grid-cols-2 sm:gap-y-6">
             {skills.map((skill, i) => (
               <SkillBar key={skill.name} name={skill.name} level={skill.level} index={i} />
             ))}

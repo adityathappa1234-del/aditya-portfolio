@@ -7,7 +7,7 @@ import { cardIn, staggerContainer } from '@/animations/variants'
 
 export function Education() {
   return (
-    <section id="education" className="relative z-10 px-4 py-32 sm:px-6 lg:px-8">
+    <section id="education" className="relative z-10 px-5 py-14 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
       <DepthSection className="mx-auto max-w-4xl">
         <SectionHeading
           eyebrow="Education"
@@ -20,7 +20,7 @@ export function Education() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="perspective-1000 space-y-6"
+          className="perspective-1000 space-y-5 sm:space-y-6"
         >
           {education.map((edu) => (
             <motion.article
@@ -33,11 +33,11 @@ export function Education() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.05] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-              <div className="relative z-10 flex items-start gap-5">
+              <div className="relative z-10 flex items-start gap-4 sm:gap-5">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: -6 }}
                   transition={{ duration: 0.3 }}
-                  className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-panel bg-gradient-to-br from-accent/15 to-accent-2/15 text-accent"
+                  className="flex h-12 w-12 flex-shrink-0 sm:h-14 sm:w-14 items-center justify-center rounded-panel bg-gradient-to-br from-accent/15 to-accent-2/15 text-accent"
                 >
                   <FiBookOpen className="h-6 w-6" />
                 </motion.div>

@@ -53,7 +53,7 @@ export function Experience() {
   }
 
   return (
-    <section id="experience" className="relative z-10 px-4 py-32 sm:px-6 lg:px-8">
+    <section id="experience" className="relative z-10 px-5 py-14 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
       <DepthSection className="mx-auto max-w-4xl">
         <SectionHeading
           eyebrow="Experience"
@@ -75,7 +75,7 @@ export function Experience() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            className="perspective-1000 space-y-6"
+            className="perspective-1000 space-y-5 sm:space-y-6"
           >
             {experience.map((exp, i) => {
               const open = expandedIndex === i
@@ -102,11 +102,20 @@ export function Experience() {
                     <button
                       onClick={() => toggle(i)}
                       aria-expanded={open}
-                      className="flex w-full items-start justify-between gap-4 p-6 text-left"
+                      className="flex w-full items-start justify-between gap-4 p-5 text-left sm:p-6"
                     >
                       <div className="min-w-0 space-y-1.5">
-                        <h3 className="text-lg font-semibold text-ink">{exp.role}</h3>
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                          <h3 className="text-lg font-semibold text-ink">{exp.role}</h3>
+                          {exp.current && (
+                            <span className="inline-flex items-center gap-1.5 rounded-chip border border-emerald-500/25 bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-wider text-emerald-500">
+                              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                              Current role
+                            </span>
+                          )}
+                        </div>
                         <p className="font-medium text-accent">{exp.company}</p>
+                        {exp.note && <p className="text-sm text-muted">{exp.note}</p>}
                         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-faint">
                           <span className="flex items-center gap-1.5">
                             <FiCalendar className="h-3.5 w-3.5" />
@@ -141,7 +150,7 @@ export function Experience() {
                           onAnimationComplete={refreshScrollTriggers}
                           className="overflow-hidden"
                         >
-                          <div className="space-y-5 border-t border-line px-6 py-6">
+                          <div className="space-y-5 border-t border-line px-5 py-5 sm:px-6 sm:py-6">
                             <ul className="space-y-3">
                               {exp.achievements.map((achievement, j) => (
                                 <motion.li

@@ -7,7 +7,6 @@ export const personalInfo = {
   email: 'aditya.koushal@email.com',
   resumeUrl: '/resume.pdf',
   social: {
-    github: 'https://github.com/adityakoushal',
     linkedin: 'https://www.linkedin.com/in/aditya-koushal-b58b39280',
   },
 }
@@ -35,12 +34,33 @@ export const aboutCards = [
   },
 ]
 
-export const experience = [
+/**
+ * The employer name lives in one constant because the same company appears on
+ * more than one timeline entry — the role changed, the company did not.
+ * CHANGE IT HERE and every card that references it updates.
+ */
+export const currentEmployer = 'Current Company'
+
+export interface ExperienceEntry {
+  company: string
+  role: string
+  duration: string
+  location: string
+  /** Marks the role being held right now — renders a "Current role" pill. */
+  current?: boolean
+  /** Optional line under the company, e.g. to explain a role change. */
+  note?: string
+  achievements: string[]
+  technologies: string[]
+}
+
+export const experience: ExperienceEntry[] = [
   {
-    company: 'Current Company',
+    company: currentEmployer,
     role: 'Frontend Developer',
     duration: 'Jan 2025 - Present',
     location: 'India',
+    current: true,
     achievements: [
       'Building and maintaining responsive web applications using Angular and TypeScript',
       'Creating reusable components with Angular Material and SCSS',
@@ -50,10 +70,11 @@ export const experience = [
     technologies: ['Angular', 'TypeScript', 'RxJS', 'SCSS', 'Angular Material'],
   },
   {
-    company: 'Previous Company',
+    company: currentEmployer,
     role: 'Junior Frontend Developer',
     duration: 'Jun 2024 - Dec 2024',
     location: 'India',
+    note: 'Where I started at the same company, before moving up to Frontend Developer.',
     achievements: [
       'Developed shared component libraries used across multiple modules',
       'Built reactive forms with validation for data-heavy screens',
@@ -103,12 +124,23 @@ export const skills = [
   { name: 'Git', level: 85 },
 ]
 
-export const projects = [
+export interface Project {
+  title: string
+  description: string
+  techStack: string[]
+  /** Public URL. Leave it out entirely when there is nothing to link to —
+   *  the card then renders without a button rather than with a dead one. */
+  live?: string
+  role?: string
+  duration?: string
+  features: string[]
+}
+
+export const projects: Project[] = [
   {
     title: 'WeatherMax',
     description: 'A weather platform with local forecasts, live conditions and severe weather alerts. I worked on the frontend — the dashboard layout, forecast views and the charts that present the data.',
     techStack: ['Angular', 'TypeScript', 'RxJS', 'SCSS', 'Chart.js'],
-    github: undefined,
     live: 'https://weathmax.co.uk',
     role: 'Frontend Developer',
     duration: '3 months',
@@ -121,10 +153,9 @@ export const projects = [
   },
   {
     title: 'CLCRM Phase V2',
-    description: 'A CRM platform for managing clients, leads and day-to-day sales activity. I built the dashboard screens, the lead pipeline and the shared component library used across the app.',
+    description: 'A SaaS CRM platform for managing clients, leads and day-to-day sales activity. I built the dashboard screens, the lead pipeline and the shared component library used across the app.',
     techStack: ['Angular', 'TypeScript', 'RxJS', 'SCSS', 'Angular Material'],
-    github: undefined,
-    live: '#',
+    live: 'https://mycrm.wealthmax.co.uk',
     role: 'Frontend Developer',
     duration: '6 months',
     features: [
@@ -138,8 +169,6 @@ export const projects = [
     title: 'Protection & Mortgage CLCRM',
     description: 'A CRM built for mortgage and protection advisers to track applications, clients and tasks. I worked on the adviser dashboard, the application workflow screens and reporting views.',
     techStack: ['Angular', 'TypeScript', 'RxJS', 'SCSS', 'Angular Material'],
-    github: undefined,
-    live: '#',
     role: 'Frontend Developer',
     duration: '8 months',
     features: [

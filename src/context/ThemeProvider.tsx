@@ -15,7 +15,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     // Keep the mobile browser chrome in step with the surface colour.
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute('content', theme === 'dark' ? '#0A0A0F' : '#FAFAFC')
+      ?.setAttribute('content', theme === 'dark' ? '#171A24' : '#FAFAFC')
     try {
       localStorage.setItem(THEME_STORAGE_KEY, theme)
     } catch {

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion'
-import { FiArrowDown, FiDownload, FiGithub, FiLinkedin } from 'react-icons/fi'
+import { FiArrowDown, FiDownload, FiLinkedin } from 'react-icons/fi'
 import { HiOutlineMail } from 'react-icons/hi'
 import { personalInfo } from '@/data/portfolio'
 import { textReveal, textRevealContainer } from '@/animations/variants'
@@ -152,7 +152,7 @@ export function Hero() {
     <section
       ref={sectionRef}
       id="home"
-      className="relative z-10 flex min-h-screen items-center overflow-hidden px-4 pt-32 pb-24 sm:px-6 lg:px-8"
+      className="relative z-10 flex min-h-[100svh] items-center overflow-hidden px-5 pt-24 pb-14 sm:px-6 sm:pt-32 sm:pb-20 lg:px-8"
     >
       {/* Ambient parallax blobs */}
       <motion.div
@@ -169,9 +169,9 @@ export function Hero() {
       {/* mode="exit": the hero is already on screen at load, so it only needs
           the receding half of the depth effect. */}
       <DepthSection mode="exit" intensity={0.8} className="mx-auto w-full max-w-6xl">
-        <div className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+        <div className="grid items-center gap-12 sm:gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
           {/* ---------------- Copy ---------------- */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -184,7 +184,7 @@ export function Hero() {
               </span>
             </motion.div>
 
-            <div className="space-y-5">
+            <div className="space-y-4 sm:space-y-5">
               {/* Name: per-character mask reveal. Each char slides up from
                   behind an overflow-hidden line box. */}
               <motion.h1
@@ -259,7 +259,6 @@ export function Hero() {
               className="flex items-center gap-3"
             >
               {[
-                { href: personalInfo.social.github, label: 'GitHub', Icon: FiGithub },
                 { href: personalInfo.social.linkedin, label: 'LinkedIn', Icon: FiLinkedin },
               ].map(({ href, label, Icon }) => (
                 <motion.a
@@ -296,7 +295,7 @@ export function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.6 }}
           // Hidden on mobile, where the bottom nav dock occupies this space.
-          className="mt-20 hidden items-center gap-3 text-faint transition-colors hover:text-accent sm:flex"
+          className="mt-12 hidden items-center gap-3 text-faint transition-colors hover:text-accent sm:flex"
           aria-label="Scroll to about section"
         >
           <motion.span

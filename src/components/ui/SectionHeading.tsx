@@ -25,7 +25,7 @@ export function SectionHeading({
   const centered = align === 'center'
 
   return (
-    <div className={cn('mb-16', centered && 'text-center', className)}>
+    <div className={cn('mb-10 sm:mb-14', centered && 'text-center', className)}>
       <Reveal>
         <div className={cn('flex items-center gap-3', centered && 'justify-center')}>
           {/* Rule that draws itself outward from the eyebrow label. */}

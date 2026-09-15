@@ -34,10 +34,10 @@ export function Background() {
 
     const isDark = theme === 'dark'
     // Tuned per theme: dark needs brighter strokes to register at all.
-    const dot = isDark ? '139, 92, 246' : '99, 102, 241'
-    const gridAlpha = isDark ? 0.055 : 0.04
-    const dotAlphaScale = isDark ? 1.5 : 1
-    const linkAlpha = isDark ? 0.09 : 0.05
+    const dot = isDark ? '167, 139, 250' : '99, 102, 241'
+    const gridAlpha = isDark ? 0.045 : 0.04
+    const dotAlphaScale = isDark ? 1.25 : 1
+    const linkAlpha = isDark ? 0.075 : 0.05
 
     let animationId = 0
     let mouseX = -9999
@@ -122,9 +122,9 @@ export function Background() {
       // Pointer spotlight
       if (mouseX > -9999) {
         const g = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 420)
-        g.addColorStop(0, `rgba(99, 102, 241, ${isDark ? 0.1 : 0.06})`)
-        g.addColorStop(0.4, `rgba(139, 92, 246, ${isDark ? 0.05 : 0.03})`)
-        g.addColorStop(1, 'rgba(99, 102, 241, 0)')
+        g.addColorStop(0, `rgba(129, 140, 248, ${isDark ? 0.09 : 0.06})`)
+        g.addColorStop(0.4, `rgba(167, 139, 250, ${isDark ? 0.045 : 0.03})`)
+        g.addColorStop(1, 'rgba(129, 140, 248, 0)')
         ctx.fillStyle = g
         ctx.fillRect(0, 0, w, h)
       }
@@ -172,7 +172,7 @@ export function Background() {
       <canvas ref={canvasRef} className="pointer-events-none fixed inset-0 z-0" aria-hidden="true" />
       {/* Vignette: sinks the edges so receding sections read as going "into" the page. */}
       <div
-        className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,var(--bg)_100%)]"
+        className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,color-mix(in_srgb,var(--bg)_70%,transparent)_100%)]"
         aria-hidden="true"
       />
       <div className="noise-overlay" aria-hidden="true" />
