@@ -2,7 +2,7 @@ export const personalInfo = {
   name: 'Aditya Koushal',
   headline: 'Frontend Developer',
   tagline: 'Building clean, reliable web interfaces.',
-  bio: 'Frontend developer with 1.5 years of experience building web applications with Angular and TypeScript. I focus on clean component structure, responsive layouts and interfaces that stay fast and easy to use.',
+  bio: 'Frontend Developer with 1+ years of experience specializing in Angular and TypeScript. I build responsive, high-performance web applications and software products, with hands-on experience delivering features for SaaS platforms. My focus is on writing clean, maintainable component architecture and crafting interfaces that are both fast and intuitive for end users.',
   location: 'India',
   email: 'aditya.koushal@email.com',
   resumeUrl: '/resume.pdf',
@@ -19,7 +19,7 @@ export const aboutCards = [
   },
   {
     title: 'Experience',
-    description: '1.5 years of professional frontend experience working on production Angular projects with real users and real deadlines.',
+    description: '1+ years of professional frontend experience working on production Angular projects with real users and real deadlines.',
     icon: '💼',
   },
   {
@@ -39,7 +39,7 @@ export const aboutCards = [
  * more than one timeline entry — the role changed, the company did not.
  * CHANGE IT HERE and every card that references it updates.
  */
-export const currentEmployer = 'Current Company'
+export const currentEmployer = 'Wealthmax Financial Advisers Private Limited'
 
 export interface ExperienceEntry {
   company: string
@@ -58,7 +58,7 @@ export const experience: ExperienceEntry[] = [
   {
     company: currentEmployer,
     role: 'Frontend Developer',
-    duration: 'Jan 2025 - Present',
+    duration: 'Jan 2026 - Present',
     location: 'India',
     current: true,
     achievements: [
@@ -71,22 +71,8 @@ export const experience: ExperienceEntry[] = [
   },
   {
     company: currentEmployer,
-    role: 'Junior Frontend Developer',
-    duration: 'Jun 2024 - Dec 2024',
-    location: 'India',
-    note: 'Where I started at the same company, before moving up to Frontend Developer.',
-    achievements: [
-      'Developed shared component libraries used across multiple modules',
-      'Built reactive forms with validation for data-heavy screens',
-      'Implemented responsive layouts and fixed cross-browser issues',
-      'Took part in code reviews and day-to-day bug fixing',
-    ],
-    technologies: ['Angular', 'TypeScript', 'JavaScript', 'SCSS', 'Git'],
-  },
-  {
-    company: 'Internship Company',
     role: 'Frontend Intern',
-    duration: 'Jan 2024 - May 2024',
+    duration: 'June 2025 - January 2026',
     location: 'India',
     achievements: [
       'Assisted in building landing pages and internal dashboard screens',
@@ -98,16 +84,22 @@ export const experience: ExperienceEntry[] = [
 
 export const education = [
   {
-    degree: 'Bachelor of Technology in Computer Science',
-    institution: 'University Name',
-    duration: '2020 - 2024',
+    degree: 'Bachelor in Information Technology',
+    institution: 'MBS College Of Engineering And Technology',
+    duration: '2021 - 2025',
     description: 'Computer science fundamentals, data structures, algorithms and web technologies.',
   },
   {
     degree: 'Higher Secondary Education',
-    institution: 'School Name',
-    duration: '2018 - 2020',
-    description: 'Science stream with Mathematics and Computer Science.',
+    institution: 'Shiksha Niketan',
+    duration: '2019 - 2021',
+    description: 'Non-Medical stream with a focus on Science and Mathematics.',
+  },
+  {
+    degree: 'High School Education',
+    institution: 'Fatima Convent',
+    duration: '2009 - 2019',
+    description: 'Upto 10th grade with a focus on Science and Basic Mathematics.',
   },
 ]
 
@@ -138,24 +130,24 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: 'WeatherMax',
-    description: 'A weather platform with local forecasts, live conditions and severe weather alerts. I worked on the frontend — the dashboard layout, forecast views and the charts that present the data.',
-    techStack: ['Angular', 'TypeScript', 'RxJS', 'SCSS', 'Chart.js'],
-    live: 'https://weathmax.co.uk',
+    title: 'Wealthmax Website',
+    description: 'A financial advisory platform offering protection planning, mortgages, pensions, wills & estate planning, and commercial lending. I worked on the frontend — building the site\'s pages, service sections, and client-facing layout.',
+    techStack: ['Angular', 'TypeScript', 'SCSS'],
+    live: 'https://wealthmax.co.uk/',
     role: 'Frontend Developer',
     duration: '3 months',
     features: [
-      '15-day and hourly forecast views',
-      'Live weather conditions dashboard',
-      'Severe weather alerts',
-      'Multi-location support',
+      'Service pages (Protection, Mortgages, Pensions, Wills & Estate Planning, Commercial Lending)',
+      'Responsive homepage with testimonials and callback request form',
+      'Blog/articles section',
+      'Newsletter subscription',
     ],
   },
   {
     title: 'CLCRM Phase V2',
     description: 'A SaaS CRM platform for managing clients, leads and day-to-day sales activity. I built the dashboard screens, the lead pipeline and the shared component library used across the app.',
     techStack: ['Angular', 'TypeScript', 'RxJS', 'SCSS', 'Angular Material'],
-    live: 'https://mycrm.wealthmax.co.uk',
+    // live: 'https://mycrm.wealthmax.co.uk',
     role: 'Frontend Developer',
     duration: '6 months',
     features: [
@@ -169,6 +161,7 @@ export const projects: Project[] = [
     title: 'Protection & Mortgage CLCRM',
     description: 'A CRM built for mortgage and protection advisers to track applications, clients and tasks. I worked on the adviser dashboard, the application workflow screens and reporting views.',
     techStack: ['Angular', 'TypeScript', 'RxJS', 'SCSS', 'Angular Material'],
+    live: 'https://mycrm.wealthmax.co.uk',
     role: 'Frontend Developer',
     duration: '8 months',
     features: [
